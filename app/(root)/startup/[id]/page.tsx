@@ -15,8 +15,10 @@ const md = markdownit();
 
 const Page = async ({params}: { params: Promise<{ id: string }> }) => {
   const id = (await params).id;
-  const post = await client.fetch(STARTUP_BY_ID_QUERY, {id});
-  const {select: editorPosts} = await client.fetch(PLAYLIST_BY_SLUG_QUERY, {slug: "editor-picks-new"});
+  const [post, {select: editorPosts}] = await Promise.all([
+    await client.fetch(STARTUP_BY_ID_QUERY, {id}),
+    await client.fetch(PLAYLIST_BY_SLUG_QUERY, {slug: "editor-picks-new"})
+  ]);
 
   if (!post) return notFound();
 
@@ -29,7 +31,7 @@ const Page = async ({params}: { params: Promise<{ id: string }> }) => {
         <p className={`sub-heading !max-w-5xl`}>{post.description}</p>
       </section>
       <section className={`section_container`}>
-        <img src={post?.image} alt="image" className={`rounded-xl w-full h-auto`}/>
+        <Image src={post?.image} alt="image" className={`rounded-xl w-full h-auto`}/>
         <div className={`space-y-5 mt-10 max-w-4xl mx-auto`}>
           <div className={`flex-between gap-5`}>
             <Link className={`flex gap-2 items-center mb-3`} href={`/user/${post.author?._id}`}>
