@@ -30,5 +30,5 @@ A web application to showcase startups, built with Next.js, TypeScript, and Sani
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/startup-showcase.git
-   cd startup-showcase
+   git clone https://github.com/Maximus5470/yc_directory_project.git
+   cd yc_directory_project
