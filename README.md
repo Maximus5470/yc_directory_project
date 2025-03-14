@@ -16,6 +16,7 @@ A web application to showcase startups, built with Next.js, TypeScript, and Sani
 - **Backend**: Sanity.io
 - **Authentication**: NextAuth.js with GitHub provider
 - **Styling**: Tailwind CSS
+- **Monitoring**: Sentry
 
 ## Getting Started
 
